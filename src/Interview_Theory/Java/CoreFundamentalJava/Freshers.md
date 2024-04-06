@@ -1,3 +1,4 @@
+## 30 Questions in total:
 ### Q) What is Java?
 - Java is a high-level, class-based, general-purpose, object-oriented programming language. 
 - Intended to let developers write once, run anywhere (WORA).
