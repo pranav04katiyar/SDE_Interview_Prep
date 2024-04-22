@@ -1,5 +1,16 @@
 ## 13 Questions in total
 ### 1. What is Spring Framework?
+- Spring is an open-source lightweight framework used to reduce the complexities in developing loosely-coupled enterprise level Java applications.
+- Spring handles all the infrastructure-related aspects which lets the programmer to focus mostly on application development.
+- Spring has a core framework that provides essential core set of functionalities + additional modules that provide additional functionality based on the application requirements.(Web, Data, Cloud, Authentication, etc.)
+- There are around 20 modules which are generalized into the following types:
+  1. Core Container
+  2. Data Access/Integration
+  3. Web
+  4. AOP (Aspect Oriented Programming)
+  5. Instrumentation
+  6. Messaging
+  7. Test
 
 ### 2. What are the features of Spring Framework?
 
