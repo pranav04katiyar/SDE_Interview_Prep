@@ -1,4 +1,4 @@
-## 20 Questions in total
+## 34 Questions in total
 ### 1. What is Dependency Injection?
 - Dependency Injection is a design pattern which says "Whenever a class is dependent on another class, instead of creating an object of the dependency within the class, we should pass it as a parameter to a constructor or through a setter method, so that the class is loosely-coupled, easy to test and maintain."
   - It is used to remove the hard-coded dependencies and make the application loosely-coupled and easy to maintain.
@@ -97,40 +97,68 @@
       3. Can lead to more complex initialization logic and potential runtime errors if dependencies are not set correctly.
       - In general, setter injection is more suitable when the dependency is optional or can change dynamically. 
 
-### 2. Diff b/w Spring & SpringBoot
+### 2. How framework helps?
 
-### 3. Spring Profiles
+### 3. Relation and Diff. b/w Spring & SpringBoot? Explain other Spring Boot Peers that relies on Spring Framework - Spring Cloud , Spring WebFlux, Spring Batch etc.
 
-### 4. Logging and Levels of Logging
+### 4. What are Spring Profiles - spring.profiles.active? Why are they used?
 
-### 5. What are Beans
+### 5. Spring actuator and its importance.
 
-### 6. What are Annotations
+### 6. Logging and Levels of Logging
 
-### 7. Component Scan Annotation
+### 7. Spring boot actuator endpoints and logging level with priority
 
-### 8. Swagger
+### 8. Necessity of configuration in Spring Boot.
 
-### 9. Starting point of Spring Boot Application
+### 9. What are Beans? How are they created in Spring Boot?
 
-### 10. What is Singleton DP. Are Spring Beans thread safe?
+### 10. What are Annotations? Explain the various annotations used in Spring Boot.
 
-### 11. Can we create Non-Web applications in Spring Boot?
+### 11. What is @ComponentScan Annotation? Why is it used?
 
-### 12. Default Application Server of Spring Boot. Can we replace Apache Tomcat with some other App Server?
+### 12. What is Swagger? Why is it used?
 
-### 13. Flow of API requests in Spring
+### 13. What is the Starting point of Spring Boot Application? What are the various Spring Boot starters?
 
-### 14. Give a use case and asked to design the  backend API implementation for one particular API request
+### 14. How to create a customized starter in Spring Boot?
 
-### 15. Diff b/w @RequestMapping and @GetMapping
+### 15. What is Singleton DP. Are Spring Beans thread safe?
 
-### 16. Diff b/w @RequestController and @Controller
+### 16. Can we create Non-Web applications in Spring Boot?
 
-### 17. What are the Build Tools use are aware of?
+### 17. Default Application Server of Spring Boot. Can we replace Apache Tomcat with some other App Server?
 
-### 18. Adding dependencies in Maven
+### 18. Flow of API requests in Spring
 
-### 19. Transaction management annotation and how to enable it 
+### 19. Give a use case and asked to design the  backend API implementation for one particular API request
 
-### 20. Spring boot actuator endpoints and logging level with priority
+### 20. Diff b/w @RequestMapping and @GetMapping
+
+### 21. Diff b/w @RequestController and @Controller
+
+### 22. What are the Build Tools use are aware of?
+
+### 23. Adding dependencies in Maven
+
+### 24. Transaction management annotation and how to enable it? 
+
+### 25. How is Transaction Handling in Spring Boot achieved?
+
+### 26. Transactions, Isolation levels, Concurrency
+
+### 27. Optimistic and passive-locking
+
+### 28. @Autoconfiguration? only definition wont work, you need to know the working , why it is used in springBoot , what it does. (All the discussions were like this only)
+
+### 29. Health Monitoring
+
+### 30. How u create scripts in CLI(Command Line Interface)
+
+### 31. Authentication Vs Authorisation
+
+### 32. How you use authentication and authorization in spring and name a few annotations to work with spring security.
+
+### 33. How to create DI when there is a need to create 2 objects for a particular request
+
+### 34. How to achieve SRP in Springboot
