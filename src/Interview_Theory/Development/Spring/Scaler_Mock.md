@@ -95,11 +95,29 @@
       1. Offers more flexibility by allowing dependencies to be set or changed after object creation.
       2. Useful when the dependency is optional or can change during the object's lifecycle. 
       3. Can lead to more complex initialization logic and potential runtime errors if dependencies are not set correctly.
-      - In general, setter injection is more suitable when the dependency is optional or can change dynamically. 
+      - In general, setter injection is more suitable when the dependency is optional or can change dynamically.
+  
+#### 1.1 How does Spring Framework implement Dependency Injection?
+- Spring Framework implements Dependency Injection through Inversion of Control (IoC) container.
+  - Inversion of Control (IoC) is a design principle where the control of object creation and lifecycle is inverted from the application code to a container or framework.
+  - In Spring, the IoC container is responsible for managing the lifecycle of objects, creating and wiring dependencies, and providing them to the application when needed.
+  - Spring uses Dependency Injection to achieve IoC by injecting dependencies into objects rather than having the objects create their dependencies.
+- Spring uses annotations like `@Autowired`, `@Component`, `@Service`, `@Repository`, etc., to define and inject dependencies.
+  - Spring also supports constructor injection, setter injection, and field injection for injecting dependencies.
+- Spring's DI container manages the dependencies between components, making it easier to manage object creation and their dependencies.
+  - This reduces coupling between components, making the code more testable and flexible.
+  - 
 
 ### 2. How framework helps?
+- A framework provides a structure and standardized way as well as set of tools, libraries and modules to streamline the development process of an application.
+  1. **Boilerplate code abstraction:** Frameworks provide pre-built low-level code details to handle common tasks, like handling HTTP requests, database interactions, transaction management, security etc., allowing developers to focus more on implementing business logics rather than writing repetitive code.
+  2. **Consistency and standardization:** Frameworks enforce certain set of conventions and best practices, ensuring that the codebase is consistent and maintainable across the application. This makes it easier for developers to understand each other's code, collaborate effectively, and maintain the application over time.
+  3. **Modularity and reusability:** Frameworks promote modular design by breaking down the application into smaller components or modules, which can be reused across the application or in other projects. For example, in Spring, modular development through Dependency Injection mechanism is promoted, encouraging breaking down of application into smaller components like controllers, services, repositories etc., which can be easily reused in different parts of the application.
+  4. **Scalability and performance:** Frameworks often provide built-in features, tools and architectural patterns for scalability and performance optimization, both vertically (by adding more resources to a single server and improving its performance efficiency using techniques like caching, lazy loading, connection pooling, etc.) and horizontally (by distributing the workload and optimizing interactions across multiple servers like load balancing, data partitioning, etc.), to ensure that the application can handle increased traffic and maintain high performance.
+  5. **Security and reliability:** Frameworks often come with built-in security features and mechanisms to protect the application from common security threats like SQL injection, cross-site scripting, etc. They also provide tools for authentication, authorization, encryption, and other security measures to ensure that the application is secure and reliable.
+  6. **Testing and debugging:** Frameworks provide tools and libraries for automated testing, debugging, and profiling of the application, making it easier for developers to write unit tests, integration tests, and perform debugging to identify and fix issues in the codebase. This helps in ensuring the quality and reliability of the application.
 
-### 3. Relation and Diff. b/w Spring & SpringBoot? Explain other Spring Boot Peers that relies on Spring Framework - Spring Cloud , Spring WebFlux, Spring Batch etc.
+### 3. Relation and Diff. b/w Spring & SpringBoot? What are the other Spring Boot Peers that rely on Spring Framework (ans- Spring Cloud , Spring WebFlux, Spring Batch etc.)
 
 ### 4. What are Spring Profiles - spring.profiles.active? Why are they used?
 
