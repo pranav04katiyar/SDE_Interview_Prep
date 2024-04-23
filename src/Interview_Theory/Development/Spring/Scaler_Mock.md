@@ -1,5 +1,5 @@
 ## 20 Questions in total
-### 1. What is Dependency Injection
+### 1. What is Dependency Injection?
 - Dependency Injection is a design pattern which says "Whenever a class is dependent on another class, instead of creating an object of the dependency within the class, we should pass it as a parameter to a constructor or through a setter method, so that the class is loosely-coupled, easy to test and maintain."
   - It is used to remove the hard-coded dependencies and make the application loosely-coupled and easy to maintain.
   - It also facilitates the reusability of the dependencies and makes the application easy to test and modify.
