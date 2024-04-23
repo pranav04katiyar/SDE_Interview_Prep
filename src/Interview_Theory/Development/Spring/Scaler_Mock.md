@@ -38,7 +38,7 @@
         > - This is the main idea behind Dependency Injection.
 - There are 2 types of Dependency Injection:
   1. Constructor Injection: The dependencies are provided through the class constructor.
-    - The above `Car and Engine` example is an example of Constructor Injection.
+    - > The above `Car and Engine` example is an example of Constructor Injection.
   2. Setter Injection: The dependencies are provided through setter methods.
     - Example:
       ```java
