@@ -80,13 +80,13 @@
       >   - The car is built without an engine and you can choose to install any compatible engine you want after you've bought the car.
       >     - > The car can be fitted by any engine designed by any other company after its construction.
       >   - This flexibility allows you to use any compatible engine after the car has been built.
-    - So, the main difference between Constructor Injection and Setter Injection is when the dependency is provided.
-      - In Constructor Injection, the dependency is provided during the construction of the object.
-      - In Setter Injection, the dependency is provided after the object has been constructed.
-    - In constructor injection, partial injection is not allowed whereas it is allowed in setter injection.
-    - The constructor injection doesn’t override the setter property whereas the same is not true for setter injection.
-    - Constructor injection creates a new instance if any modification is done. The creation of a new instance is not possible in setter injection.
-    - In case the bean has many properties, then constructor injection is preferred. If it has few properties, then setter injection is preferred.
+    1. So, the main difference between Constructor Injection and Setter Injection is when the dependency is provided.
+        - In Constructor Injection, the dependency is provided during the construction of the object.
+        - In Setter Injection, the dependency is provided after the object has been constructed.
+    2. In constructor injection, partial injection is not allowed whereas it is allowed in setter injection.
+    3. The constructor injection doesn’t override the setter property whereas the same is not true for setter injection.
+    4. Constructor injection creates a new instance if any modification is done. The creation of a new instance is not possible in setter injection.
+    5. In case the bean has many properties, then constructor injection is preferred. If it has few properties, then setter injection is preferred.
     
   #### _Which is Better to achieve loose coupling: Constructor Injection or Setter Injection?_
   - Depends on the specific use case and design preferences. Both techniques have their advantages:
