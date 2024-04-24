@@ -321,10 +321,75 @@
 - Beans are created with the configuration metadata that the users supply to the container (by means of XML or java annotations configurations.)
 
 ### 11. What are Annotations? Explain the various annotations used in Spring Boot.
+- Annotations in Java are a form of metadata that provide data about a program that is not part of the program itself. 
+    - They can be attached to classes, methods, fields, parameters, and other program elements to provide additional information to the compiler, runtime, or other tools.
+- In Spring Boot, annotations play a crucial role in configuring and controlling the behavior of various components within the application. 
+    - They help in reducing the amount of configuration code and provide a more declarative way of defining the application's structure and behavior.
+    - Spring Boot provides a rich set of annotations that help streamline configuration, dependency injection, MVC web development, data access, and many other aspects of building enterprise-grade applications.
+    - Some commonly used annotations in Spring Boot are:
+      1. `@SpringBootApplication`: 
+         This annotation is used to mark the main class of a Spring Boot application. It combines three other annotations:
+          - `@Configuration`
+          - `@EnableAutoConfiguration` and 
+          - `@ComponentScan`.
+         
+         It essentially tells Spring Boot to enable auto-configuration, component scanning, and other features necessary to bootstrap the application. 
+      2. `@Controller`:
+         Used to mark a class as a Spring MVC controller. Controllers handle incoming HTTP requests and return appropriate responses.
+      3. `@RestController`: 
+         Similar to `@Controller`, but specifically used for RESTful web services. 
+         
+         It combines `@Controller` and `@ResponseBody`, meaning that the return value of methods will be serialized directly to the HTTP response body.
+      4. `@RequestMapping`: Used to map web requests to specific handler methods within `@Controller` or `@RestController` classes. 
+      
+         It allows you to specify the URL path and HTTP method that should trigger the method.
+      5. `@Autowired`: Used to inject dependencies automatically into Spring-managed beans. 
+         It can be applied to fields, constructors, or setter methods.
+      6. `@Service`: Used to mark a class as a service component in the Spring application context.
+         Service components typically contain business logic and are used to perform specific tasks.
+      7. `@Repository`: Marks a class as a Spring Data repository, typically used for database access.
+         It serves as a marker for the persistence layer and enables Spring's exception translation mechanism for database-related exceptions.
+      8. `@Component`: A generic stereotype annotation used to mark a class as a Spring component.
+         It indicates that the class is a candidate for auto-detection and bean instantiation by Spring's component scanning mechanism.
+      9. `@Configuration`: Indicates that a class declares one or more @Bean methods and may be processed by the Spring container to generate bean definitions and service requests for those beans.
+      10. `@Bean`: Used to define a bean explicitly in a Spring configuration class. 
+          It tells Spring that a method annotated with `@Bean` will return an object that should be registered as a bean in the Spring application context.
+      11. `@Value`: Used to inject values from properties files or environment variables into Spring components.
+          It can be applied to fields, constructor parameters, or setter methods.
+      12. `@Qualifier`: Used in conjunction with @Autowired to specify which bean to inject when multiple beans of the same type are available.
+      13. `@RequestMapping` variations:
+          - `@GetMapping`, `@PostMapping`, `@PutMapping`, `@DeleteMapping`: Convenience annotations for mapping HTTP GET, POST, PUT, and DELETE requests, respectively.
+          - `@PatchMapping`: Maps HTTP PATCH requests to handler methods.
+      14. `@PathVariable`: Used to extract values from URI template variables in `@RequestMapping` methods.
+      15. `@RequestParam`: Binds HTTP request parameters to method parameters in `@RequestMapping` methods.
+      16. `@ModelAttribute`: Binds method parameters or method return values to model attributes, which can be used in views.
+      17. `@ExceptionHandler`: Defines methods to handle exceptions thrown by request handler methods.
+      18. `@ResponseStatus`: Specifies the HTTP status code to be returned by a controller method in case of successful invocation.
+      19. `@ResponseStatus` variants:
+          - `@ResponseStatus(HttpStatus.CREATED)`: Marks a controller method to return HTTP status code 201 (Created).
+          - `@ResponseStatus(HttpStatus.NO_CONTENT)`: Marks a controller method to return HTTP status code 204 (No Content).
+      20. `@RequestBody`: Used to bind the HTTP request body to a method parameter in `@RequestMapping` methods.
+      21. `@ResponseBody`: Indicates that the return value of a method should be serialized directly to the HTTP response body in `@RequestMapping` methods.
+      22. `@CrossOrigin`: Configures cross-origin resource sharing (CORS) for web endpoints, allowing resources to be accessed from different domains.
+      23. `@Transactional`: Marks a method, class, or interface as transactional, allowing Spring to manage transactions declaratively.
+      24. `@Async`: Indicates that a method should be executed asynchronously, allowing Spring to manage the execution of the method in a separate thread.
+      25. `@Scheduled`: Used to schedule the execution of a method at fixed intervals or according to a cron expression.
+      26. `@EnableScheduling`: Enables Spring's scheduled task execution infrastructure, allowing the use of `@Scheduled` annotations.
+      27. `@EnableAsync`: Enables Spring's asynchronous method execution infrastructure, allowing the use of `@Async` annotations.
 
 ### 12. What is @ComponentScan Annotation? Why is it used?
+- Spring Boot application scans all the beans and package declarations when the application initializes. 
+- You need to add the @ComponentScan annotation for your class file to scan your components added to your project.
+- The @ComponentScan annotation is used in Spring applications to specify the base packages to scan for Spring-managed components such as @Component, @Service, @Repository, and others. 
+- When Spring Boot starts up, it automatically performs component scanning to discover and register beans within the application context.
 
 ### 13. What is Swagger? Why is it used?
+- Swagger is an open-source framework used for designing, documenting, and testing RESTful APIs.
+- It provides a set of tools and specifications for developers to generate interactive API documentation, allowing consumers to understand and interact with the API more easily.
+- Use cases:
+  - To streamline the development process of designing, documenting, and consuming RESTful APIs. 
+  - Improving developer productivity, collaboration and communication between stakeholders.
+  - Enhancing the adoption and overall quality of APIs by providing a standardized and user-friendly documentation format.
 
 ### 14. What is the Starting point of Spring Boot Application? What are the various Spring Boot starters?
 
@@ -356,7 +421,7 @@
 
 ### 28. Optimistic and passive-locking
 
-### 29. @Autoconfiguration? only definition wont work, you need to know the working , why it is used in springBoot , what it does. (All the discussions were like this only)
+### 29. Explain @Autoconfiguration? why it is used in springBoot & what it does?
 
 ### 30. Health Monitoring
 
