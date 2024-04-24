@@ -1,4 +1,4 @@
-## 34 Questions in total
+## 35 Questions in total
 ### 1. What is Dependency Injection?
 - Dependency Injection is a design pattern which says "Whenever a class is dependent on another class, instead of creating an object of the dependency within the class, we should pass it as a parameter to a constructor or through a setter method, so that the class is loosely-coupled, easy to test and maintain."
   - It is used to remove the hard-coded dependencies and make the application loosely-coupled and easy to maintain.
@@ -97,18 +97,68 @@
       3. Can lead to more complex initialization logic and potential runtime errors if dependencies are not set correctly.
       - In general, setter injection is more suitable when the dependency is optional or can change dynamically.
   
-#### 1.1 How does Spring Framework implement Dependency Injection?
+### 2. How does Spring Framework implement Dependency Injection?
 - Spring Framework implements Dependency Injection through Inversion of Control (IoC) container.
   - Inversion of Control (IoC) is a design principle where the control of object creation and lifecycle is inverted from the application code to a container or framework.
+    - > In simple terms, instead of the application creating objects and managing their dependencies, the framework creates objects and manages their dependencies, providing them to the application when needed.
+      > - Whenever a framework does DI for us, it is called Inversion of Control (IoC).
   - In Spring, the IoC container is responsible for managing the lifecycle of objects, creating and wiring dependencies, and providing them to the application when needed.
-  - Spring uses Dependency Injection to achieve IoC by injecting dependencies into objects rather than having the objects create their dependencies.
-- Spring uses annotations like `@Autowired`, `@Component`, `@Service`, `@Repository`, etc., to define and inject dependencies.
-  - Spring also supports constructor injection, setter injection, and field injection for injecting dependencies.
-- Spring's DI container manages the dependencies between components, making it easier to manage object creation and their dependencies.
-  - This reduces coupling between components, making the code more testable and flexible.
-  - 
+    - > Spring provides a very easy way to inject the dependencies using beans.
+      > - A bean is an object that is instantiated, assembled, and managed by the Spring IoC container.
+      > - When we start a Spring application, Spring creates objects of all beans and puts them in the Spring container.
+  - **_Spring uses Dependency Injection to achieve IoC by injecting dependencies into objects rather than having the objects create their dependencies._**
+    - Spring provides various ways to define and inject dependencies:
+      1. XML-based configuration:
+         - Spring allows defining beans and their dependencies in an XML configuration file, which is then loaded by the Spring IoC container.
+      2. Annotation-based configuration:
+         - Spring supports annotations like `@Autowired`, `@Component`, `@Service`, `@Repository`, etc., to define and inject dependencies.
+      3. Java-based configuration:
+         - Spring allows defining beans and their dependencies using Java configuration classes annotated with `@Configuration` and `@Bean`.
+    - Spring uses annotations like `@Autowired`, `@Component`, `@Service`, `@Repository`, etc., to define and inject dependencies.
+      - Spring also supports constructor injection, setter injection, and field injection for injecting dependencies.
+- Example:
+  ```java
+    @Component
+    public class Car {
+        private Engine engine;
+        @Autowired
+        public Car(Engine engine) {
+            this.engine = engine;
+        }
+    }
+    ```
+    ```java
+    @Component
+    public class Engine {
+        public void start() {
+            System.out.println("Engine started");
+        }
+    }
+    ```
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+            Car car = context.getBean(Car.class);
+            car.start();
+        }
+    }
+    ```
+    ```java
+    @Configuration
+    @ComponentScan(basePackages = "com.example")
+    public class AppConfig {
+    }
+    ```
+    - > In the above example, the `Car` class is annotated with `@Component` to indicate that it is a Spring bean.
+      > - The `Engine` class is also annotated with `@Component` to indicate that it is a Spring bean.
+      > - The `Car` class has a constructor that takes an `Engine` object as a parameter and is annotated with `@Autowired` to indicate that the `Engine` dependency should be injected by Spring.
+      > - The `AppConfig` class is annotated with `@Configuration` and `@ComponentScan` to enable component scanning and auto-detection of Spring beans.
+    - > The `Main` class creates an `ApplicationContext` using the `AppConfig` class and retrieves the `Car` bean from the context.
+      > - When the `Car` bean is retrieved from the context, Spring automatically injects the `Engine` dependency into the `Car` object.
+      > - This way, Spring manages the lifecycle of the `Car` and `Engine` objects, creates and wires the dependencies, and provides them to the application when needed. 
 
-### 2. How framework helps?
+### 3. How framework helps?
 - A framework provides a structure and standardized way as well as set of tools, libraries and modules to streamline the development process of an application.
   1. **Boilerplate code abstraction:** 
      > Frameworks provide pre-built low-level code details to handle common tasks, like handling HTTP requests, database interactions, transaction management, security etc., allowing developers to focus more on implementing business logics rather than writing repetitive code.
@@ -125,66 +175,76 @@
   7. **Community support and documentation:**
      > Frameworks often have a large community of developers, contributors, and users who actively contribute to the framework, provide support, share knowledge, and create documentation, tutorials, and resources to help developers learn and use the framework effectively. This community support helps developers to quickly resolve issues, learn new features, and stay updated with the latest trends and best practices in the development community.
 
-### 3. Relation and Diff. b/w Spring & SpringBoot? What are the other Spring Boot Peers that rely on Spring Framework (ans- Spring Cloud , Spring WebFlux, Spring Batch etc.)
+### 4. Relation and Diff. b/w Spring & SpringBoot? What are the other Spring Boot Peers that rely on Spring Framework (ans- Spring Cloud , Spring WebFlux, Spring Batch etc.)
+- **Spring Framework:**
+  - Spring is an open-source lightweight framework that is used to develop loosely-coupled enterprise level Java applications.
+  - Spring handles all the infrastructure-related aspects which lets the programmer focus mostly on application development. 
+  - Spring works on the principle of Dependency Injection, which allows us to create beans that are automatically created as well as injected into other objects.
+  - Spring provides various modules like Spring Core, Spring AOP, Spring ORM, Spring DAO, Spring MVC, Spring Security, etc., to support different aspects of enterprise application development.
+- 
 
-### 4. What are Spring Profiles - spring.profiles.active? Why are they used?
+### 5. What are Spring Profiles - spring.profiles.active? Why are they used?
 
-### 5. Spring actuator and its importance.
+### 6. Spring actuator and its importance.
 
-### 6. Logging and Levels of Logging
+### 7. Logging and Levels of Logging
 
-### 7. Spring boot actuator endpoints and logging level with priority
+### 8. Spring boot actuator endpoints and logging level with priority
 
-### 8. Necessity of configuration in Spring Boot.
+### 9. Necessity of configuration in Spring Boot.
 
-### 9. What are Beans? How are they created in Spring Boot?
+### 10. What are Beans? How are they created in Spring Boot?
+- A bean is an object that Spring will automatically create as well as inject the dependencies for you whenever and wherever needed and manage the lifecycle of the object.
+- Think of a bean as a special object that you give to Spring, so that it can inject the dependencies for you automatically whenever needed and manage the lifecycle of the object.
+- A Spring Bean is an object that is instantiated, assembled, and managed by the Spring IoC container.
+- When we start a Spring application, Spring creates objects of all beans and puts them in the Spring container.
 
-### 10. What are Annotations? Explain the various annotations used in Spring Boot.
+### 11. What are Annotations? Explain the various annotations used in Spring Boot.
 
-### 11. What is @ComponentScan Annotation? Why is it used?
+### 12. What is @ComponentScan Annotation? Why is it used?
 
-### 12. What is Swagger? Why is it used?
+### 13. What is Swagger? Why is it used?
 
-### 13. What is the Starting point of Spring Boot Application? What are the various Spring Boot starters?
+### 14. What is the Starting point of Spring Boot Application? What are the various Spring Boot starters?
 
-### 14. How to create a customized starter in Spring Boot?
+### 15. How to create a customized starter in Spring Boot?
 
-### 15. What is Singleton DP. Are Spring Beans thread safe?
+### 16. What is Singleton DP. Are Spring Beans thread safe?
 
-### 16. Can we create Non-Web applications in Spring Boot?
+### 17. Can we create Non-Web applications in Spring Boot?
 
-### 17. Default Application Server of Spring Boot. Can we replace Apache Tomcat with some other App Server?
+### 18. Default Application Server of Spring Boot. Can we replace Apache Tomcat with some other App Server?
 
-### 18. Flow of API requests in Spring
+### 19. Flow of API requests in Spring
 
-### 19. Give a use case and asked to design the  backend API implementation for one particular API request
+### 20. Give a use case and asked to design the  backend API implementation for one particular API request
 
-### 20. Diff b/w @RequestMapping and @GetMapping
+### 21. Diff b/w @RequestMapping and @GetMapping
 
-### 21. Diff b/w @RequestController and @Controller
+### 22. Diff b/w @RequestController and @Controller
 
-### 22. What are the Build Tools use are aware of?
+### 23. What are the Build Tools use are aware of?
 
-### 23. Adding dependencies in Maven
+### 24. Adding dependencies in Maven
 
-### 24. Transaction management annotation and how to enable it? 
+### 25. Transaction management annotation and how to enable it? 
 
-### 25. How is Transaction Handling in Spring Boot achieved?
+### 26. How is Transaction Handling in Spring Boot achieved?
 
-### 26. Transactions, Isolation levels, Concurrency
+### 27. Transactions, Isolation levels, Concurrency
 
-### 27. Optimistic and passive-locking
+### 28. Optimistic and passive-locking
 
-### 28. @Autoconfiguration? only definition wont work, you need to know the working , why it is used in springBoot , what it does. (All the discussions were like this only)
+### 29. @Autoconfiguration? only definition wont work, you need to know the working , why it is used in springBoot , what it does. (All the discussions were like this only)
 
-### 29. Health Monitoring
+### 30. Health Monitoring
 
-### 30. How u create scripts in CLI(Command Line Interface)
+### 31. How u create scripts in CLI(Command Line Interface)
 
-### 31. Authentication Vs Authorisation
+### 32. Authentication Vs Authorisation
 
-### 32. How you use authentication and authorization in spring and name a few annotations to work with spring security.
+### 33. How you use authentication and authorization in spring and name a few annotations to work with spring security.
 
-### 33. How to create DI when there is a need to create 2 objects for a particular request
+### 34. How to create DI when there is a need to create 2 objects for a particular request
 
-### 34. How to achieve SRP in Springboot
+### 35. How to achieve SRP in Springboot
