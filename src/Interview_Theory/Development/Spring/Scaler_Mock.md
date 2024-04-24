@@ -67,7 +67,7 @@
         >     - This also allows for many different types of engines to be used in the `Car` class as long as they follow the requirements defined.
         > - This way, the `Car` class is loosely-coupled with the `Engine` class and it is easy to test, maintain and modify.
       
-  #### Difference between Constructor Injection and Setter Injection:
+  #### _Difference between Constructor Injection and Setter Injection:_
     - Using the above analogies:
       1. Constructor Injection:
         - Imagine the car is a custom order car, where you specify that you want the car to come with a specific type of engine.
@@ -84,7 +84,7 @@
       - In Constructor Injection, the dependency is provided during the construction of the object.
       - In Setter Injection, the dependency is provided after the object has been constructed.
     
-  #### Which is Better to achieve loose coupling: Constructor Injection or Setter Injection?
+  #### _Which is Better to achieve loose coupling: Constructor Injection or Setter Injection?_
   - Depends on the specific use case and design preferences. Both techniques have their advantages:
     - Constructor Injection:
       1. Provides clarity and ensures that required dependencies are provided upfront during object creation. 
