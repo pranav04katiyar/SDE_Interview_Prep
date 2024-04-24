@@ -69,20 +69,24 @@
       
   #### _Difference between Constructor Injection and Setter Injection:_
     - Using the above analogies:
-      1. Constructor Injection:
-        - Imagine the car is a custom order car, where you specify that you want the car to come with a specific type of engine.
-        - When the car is built, it's built with that engine already installed. You're essentially defining the requirements for the car upfront and the factory ensures those requirements are met during construction. 
-          - > The factory doesn't care which specific engine brand or model you choose, it only ensures that the car is built with a slot for the engine, which will be filled by whatever engine you provide.
-            > - The car can be fitted by any engine designed by any other company at the time of its construction.
-        - This flexibility allows you to use any compatible engine at the time of construction.
-      2. Setter Injection:
-        - Imagine the car is a standard car, where you can buy the car and then choose the engine you want to install in it.
-        - The car is built without an engine and you can choose to install any compatible engine you want after you've bought the car.
-          - > The car can be fitted by any engine designed by any other company after its construction.
-        - This flexibility allows you to use any compatible engine after the car has been built.
+      > 1. **CONSTRUCTOR INJECTION:**
+      >   - Imagine the car is a custom order car, where you specify that you want the car to come with a specific type of engine.
+      >   - When the car is built, it's built with that engine already installed. You're essentially defining the requirements for the car upfront and the factory ensures those requirements are met during construction. 
+      >     - > The factory doesn't care which specific engine brand or model you choose, it only ensures that the car is built with a slot for the engine, which will be filled by whatever engine you provide.
+      >       > - The car can be fitted by any engine designed by any other company at the time of its construction.
+      >   - This flexibility allows you to use any compatible engine at the time of construction.
+      > 2. **SETTER INJECTION:**
+      >   - Imagine the car is a standard car, where you can buy the car and then choose the engine you want to install in it.
+      >   - The car is built without an engine and you can choose to install any compatible engine you want after you've bought the car.
+      >     - > The car can be fitted by any engine designed by any other company after its construction.
+      >   - This flexibility allows you to use any compatible engine after the car has been built.
     - So, the main difference between Constructor Injection and Setter Injection is when the dependency is provided.
       - In Constructor Injection, the dependency is provided during the construction of the object.
       - In Setter Injection, the dependency is provided after the object has been constructed.
+    - In constructor injection, partial injection is not allowed whereas it is allowed in setter injection.
+    - The constructor injection doesn’t override the setter property whereas the same is not true for setter injection.
+    - Constructor injection creates a new instance if any modification is done. The creation of a new instance is not possible in setter injection.
+    - In case the bean has many properties, then constructor injection is preferred. If it has few properties, then setter injection is preferred.
     
   #### _Which is Better to achieve loose coupling: Constructor Injection or Setter Injection?_
   - Depends on the specific use case and design preferences. Both techniques have their advantages:
@@ -181,7 +185,11 @@
   - Spring handles all the infrastructure-related aspects which lets the programmer focus mostly on application development. 
   - Spring works on the principle of Dependency Injection, which allows us to create beans that are automatically created as well as injected into other objects.
   - Spring provides various modules like Spring Core, Spring AOP, Spring ORM, Spring DAO, Spring MVC, Spring Security, etc., to support different aspects of enterprise application development.
-- 
+- **Spring Boot:**
+  - Spring Boot is a project built on top of the Spring Framework that aims to simplify the development of production-ready Spring applications.
+  - Spring Boot is a project that is built on top of the Spring Framework. It provides a simpler and faster way to set up, configure, and run both simple and web-based applications.
+    - It eliminates the need to write any configuration files, annotations, or boilerplate code.
+    - It also automatically configures a project with all the known best practices and a set of defaults.
 
 ### 5. What are Spring Profiles - spring.profiles.active? Why are they used?
 
