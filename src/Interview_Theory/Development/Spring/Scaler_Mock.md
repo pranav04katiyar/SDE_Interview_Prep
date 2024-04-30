@@ -1,4 +1,42 @@
 ## 35 Questions in total
+1. What is Dependency Injection?
+   1. Types of Dependency Injection, their use cases and differences.
+   2. Which is Better to achieve loose coupling among them?
+2. How does Spring Framework implement Dependency Injection?
+3. How framework helps?
+4. Relation and Diff. b/w Spring & SpringBoot? What are the other Spring Boot Peers that rely on Spring Framework?
+5. What are Spring Profiles - spring.profiles.active? Why are they used?
+6. Spring actuator and its importance.
+7. Logging and Levels of Logging.
+8. Spring boot actuator endpoints and logging level with priority.
+9. Necessity of configuration in Spring Boot.
+10. What are Beans? How are they created in Spring Boot?
+11. What are Annotations? Explain the various annotations used in Spring Boot.
+12. What is @ComponentScan Annotation? Why is it used?
+13. What is Swagger? Why is it used?
+14. What is the Starting point of Spring Boot Application? What are the various Spring Boot starters?
+15. How to create a customized starter in Spring Boot?
+16. What is Singleton DP. Are Spring Beans thread safe?
+17. Can we create Non-Web applications in Spring Boot?
+18. Default Application Server of Spring Boot. Can we replace Apache Tomcat with some other App Server?
+19. Flow of API requests in Spring
+20. Give a use case and asked to design the  backend API implementation for one particular API request
+21. Diff b/w @RequestMapping and @GetMapping
+22. Diff b/w @RequestController and @Controller
+23. What are the Build Tools use are aware of?
+24. Adding dependencies in Maven
+25. Transaction management annotation and how to enable it?
+26. How is Transaction Handling in Spring Boot achieved?
+27. Transactions, Isolation levels, Concurrency
+28. Optimistic and passive-locking
+29. Explain @Autoconfiguration? why it is used in springBoot & what it does?
+30. Health Monitoring
+31. How to create scripts in CLI(Command Line Interface)?
+32. Authentication Vs Authorisation
+33. How do you use authentication and authorization in spring and name a few annotations to work with spring security?
+34. How to create DI when there is a need to create 2 objects for a particular request?
+35. How to achieve SRP in Springboot?
+
 ### 1. What is Dependency Injection?
 - Dependency Injection is a design pattern which says "Whenever a class is dependent on another class, instead of creating an object of the dependency within the class, we should pass it as a parameter to a constructor or through a setter method, so that the class is loosely-coupled, easy to test and maintain."
   - It is used to remove the hard-coded dependencies and make the application loosely-coupled and easy to maintain.
@@ -181,7 +219,7 @@
   7. **Community support and documentation:**
      > Frameworks often have a large community of developers, contributors, and users who actively contribute to the framework, provide support, share knowledge, and create documentation, tutorials, and resources to help developers learn and use the framework effectively. This community support helps developers to quickly resolve issues, learn new features, and stay updated with the latest trends and best practices in the development community.
 
-### 4. Relation and Diff. b/w Spring & SpringBoot? What are the other Spring Boot Peers that rely on Spring Framework (ans- Spring Cloud , Spring WebFlux, Spring Batch etc.)
+### 4. Relation and Diff. b/w Spring & SpringBoot? What are the other Spring Boot Peers that rely on Spring Framework?
 - **Spring Framework:**
   - Spring is an open-source lightweight framework that is used to develop loosely-coupled enterprise level Java applications.
   - Spring handles all the infrastructure-related aspects which lets the programmer focus mostly on application development. 
@@ -329,9 +367,12 @@
     - Some commonly used annotations in Spring Boot are:
       1. `@SpringBootApplication`: 
          This annotation is used to mark the main class of a Spring Boot application. It combines three other annotations:
-          - `@Configuration`
-          - `@EnableAutoConfiguration` and 
+          - `@Configuration`:
+            > Indicates that the class is a source of bean definitions for the application context. Spring Boot uses this annotation to bootstrap the application context and configure various components.
+          - `@EnableAutoConfiguration`:
+            > Tells Spring Boot to automatically configure the Spring application context based on the classpath and other configuration properties. It enables Spring Boot's auto-configuration feature, which automatically configures beans and components based on conventions, dependencies, and settings. 
           - `@ComponentScan`.
+            > Instructs Spring Boot to scan the specified base packages and their sub-packages for Spring components such as @Component, @Service, @Repository, and others. This allows Spring Boot to detect and register Spring-managed beans within the application context.
          
          It essentially tells Spring Boot to enable auto-configuration, component scanning, and other features necessary to bootstrap the application. 
       2. `@Controller`:
@@ -392,8 +433,37 @@
   - Enhancing the adoption and overall quality of APIs by providing a standardized and user-friendly documentation format.
 
 ### 14. What is the Starting point of Spring Boot Application? What are the various Spring Boot starters?
+1. The starting point of a Spring Boot application is typically the main class annotated with @SpringBootApplication. 
+    - This annotation is a meta-annotation that combines several other annotations, including @Configuration, @EnableAutoConfiguration, and @ComponentScan
+- Here's how it works:
+    1. `@Configuration`: Indicates that the class is a source of bean definitions for the application context.
+    2. `@EnableAutoConfiguration`: Tells Spring Boot to automatically configure the Spring application context based on the classpath and other configuration properties.
+    3. `@ComponentScan`: Instructs Spring Boot to scan the specified base packages and their sub-packages for Spring components such as @Component, @Service, @Repository, and others.
+- The main class annotated with @SpringBootApplication serves as the entry point for the Spring Boot application. It typically contains the main method, which is the starting point for the application's execution.
+2. Spring Boot starters are a set of dependency descriptors that are designed to simplify the process of adding dependencies to a Spring Boot application. 
+   - Starters provide pre-configured sets of dependencies for specific functionalities or use cases, making it easy to bootstrap Spring Boot projects with minimal configuration.
+   - Some common Spring Boot starters include:
+     1. `spring-boot-starter-web`: Includes dependencies for building web applications with Spring MVC, including embedded Tomcat as the default servlet container.
+     2. `spring-boot-starter-data-jpa`: Provides dependencies for using Spring Data JPA for data access, including Hibernate as the default JPA provider.
+     3. `spring-boot-starter-security`: Includes dependencies for integrating Spring Security into the application, providing features such as authentication, authorization, and CSRF protection.
+     4. `spring-boot-starter-test`: Contains dependencies for writing unit and integration tests with Spring Boot, including JUnit, Mockito, and Spring Test.
+     5. `spring-boot-starter-actuator`: Provides dependencies for integrating Spring Boot Actuator, which offers production-ready features for monitoring and managing the application.
+     6. `spring-boot-starter-log4j2`, `spring-boot-starter-logging`: Provides dependencies for logging in Spring Boot applications, including Log4j2, Logback, or JDK Logging.
 
 ### 15. How to create a customized starter in Spring Boot?
+1. Define Dependencies: Identify the dependencies and configurations that you want to include in your starter. These could be libraries, frameworks, or custom components that provide specific functionalities. 
+2. Create a New Maven or Gradle Project: Start by creating a new Maven or Gradle project for your custom starter. You can use tools like Maven Archetype or Spring Initializr to generate the project structure.
+3. Configure Project Structure: Organize your project structure according to Maven/Gradle conventions. You typically need to include the following directories:
+   - src/main/java: Contains Java source code.
+   - src/main/resources: Contains configuration files and resources.
+   - src/test/java: Contains test source code.
+   - src/test/resources: Contains test configuration files and resources.
+4. Implement Configuration: Write the necessary configuration classes to configure the dependencies and components included in your starter. This may involve creating Spring @Configuration classes, @Bean methods, or other configuration mechanisms.
+5. Package Dependencies: Package your dependencies and configurations into a reusable module. This typically involves creating a JAR file containing the compiled classes and resources.
+6. Create Spring Boot Auto-Configuration: If your starter requires custom auto-configuration, you can create a Spring Boot auto-configuration class. This class should be annotated with @Configuration and @ConditionalOnClass or @ConditionalOnMissingBean annotations to ensure that it's only applied when specific conditions are met.
+7. Define Starter Metadata: Create a spring.factories file in the src/main/resources/META-INF directory to specify the auto-configuration classes included in your starter. This file should contain entries in the format org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.CustomAutoConfiguration.
+8. Publish Your Starter: Publish your customized starter to a Maven repository or a local repository so that it can be consumed by other Spring Boot projects. You can use tools like Maven or Gradle to publish your artifact.
+9. Use Your Starter: To use your custom starter in a Spring Boot project, include it as a dependency in the project's pom.xml (Maven) or build.gradle (Gradle) file. Once added, Spring Boot will automatically apply the configurations and dependencies included in your starter.
 
 ### 16. What is Singleton DP. Are Spring Beans thread safe?
 
