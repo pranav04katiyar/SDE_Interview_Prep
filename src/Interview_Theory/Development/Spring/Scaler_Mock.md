@@ -235,29 +235,29 @@
   - Spring boot simplifies commonly used spring dependencies and runs applications straight from a command line. It also doesn’t require an application container and it helps in monitoring several components and configures them externally.
 - **Other Spring Boot Peers that rely on Spring Framework:**
   - **_Spring Cloud:_** 
-    - Spring Cloud is a set of tools and libraries that helps in building cloud-native applications using the Spring Framework.
-    - It provides tools for building distributed systems, microservices, and cloud-native applications, including service discovery, configuration management, circuit breakers, intelligent routing, and more.
+    > - Spring Cloud is a set of tools and libraries that helps in building cloud-native applications using the Spring Framework.
+    > - It provides tools for building distributed systems, microservices, and cloud-native applications, including service discovery, configuration management, circuit breakers, intelligent routing, and more.
   - **_Spring WebFlux:_**
-    - Spring WebFlux is a reactive programming framework that is part of the Spring Framework.
-    - It provides support for building reactive, non-blocking, and asynchronous applications using the Spring Framework.
+    > - Spring WebFlux is a reactive programming framework that is part of the Spring Framework.
+    > - It provides support for building reactive, non-blocking, and asynchronous applications using the Spring Framework.
   - **_Spring Batch:_**
-    - Spring Batch is a framework for batch processing within the Spring Framework.
-    - It provides reusable functions for processing large volumes of data, including reading, writing, and processing data in batches.
+    > - Spring Batch is a framework for batch processing within the Spring Framework.
+    > - It provides reusable functions for processing large volumes of data, including reading, writing, and processing data in batches.
   - **_Spring Security:_**
-    - Spring Security is a powerful and highly customizable authentication and access control framework within the Spring Framework.
-    - It provides comprehensive security services for Java EE-based enterprise software applications.
+    > - Spring Security is a powerful and highly customizable authentication and access control framework within the Spring Framework.
+    > - It provides comprehensive security services for Java EE-based enterprise software applications.
   - **_Spring Data:_**
-    - Spring Data is a part of the Spring Framework that provides a consistent and easy way to access different kinds of data stores, including relational databases, NoSQL databases, and cloud-based data services.
-    - It provides a set of abstractions and templates to simplify data access and reduce boilerplate code.
+    > - Spring Data is a part of the Spring Framework that provides a consistent and easy way to access different kinds of data stores, including relational databases, NoSQL databases, and cloud-based data services.
+    > - It provides a set of abstractions and templates to simplify data access and reduce boilerplate code.
   - **_Spring Integration:_**
-    - Spring Integration is an extension of the Spring Framework that provides support for building enterprise integration solutions.
-    - It enables the development of messaging and integration solutions using patterns like message channels, message endpoints, and message routing.
+    > - Spring Integration is an extension of the Spring Framework that provides support for building enterprise integration solutions.
+    > - It enables the development of messaging and integration solutions using patterns like message channels, message endpoints, and message routing.
   - **_Spring HATEOAS:_**
-    - Spring HATEOAS is a part of the Spring Framework that provides support for building RESTful web services that follow the HATEOAS (Hypermedia as the Engine of Application State) principle.
-    - It enables the creation of hypermedia-driven RESTful APIs that provide links to related resources and actions.
+    > - Spring HATEOAS is a part of the Spring Framework that provides support for building RESTful web services that follow the HATEOAS (Hypermedia as the Engine of Application State) principle.
+    > - It enables the creation of hypermedia-driven RESTful APIs that provide links to related resources and actions.
   - **_Spring Session:_**
-    - Spring Session is a part of the Spring Framework that provides support for managing HTTP session data in a distributed environment.
-    - It enables the storage of session data in different data stores like Redis, MongoDB, and JDBC, and provides support for session replication and clustering.
+    > - Spring Session is a part of the Spring Framework that provides support for managing HTTP session data in a distributed environment.
+    > - It enables the storage of session data in different data stores like Redis, MongoDB, and JDBC, and provides support for session replication and clustering.
 
 ### 5. What are Spring Profiles - spring.profiles.active? Why are they used?
 - While developing the application we deal with multiple environments such as dev, QA, Prod, and each environment requires a different configuration. 
@@ -280,7 +280,7 @@
 
 ### 6. Spring actuator and its importance.
 - An actuator is an additional feature of Spring that helps you to monitor and manage your application when you push it to production. 
-  - These actuators include auditing, health, CPU usage, HTTP hits, and metric gathering, and many more that are automatically applied to your application.
+  > These actuators include auditing, health, CPU usage, HTTP hits, and metric gathering, and many more that are automatically applied to your application.
 - **Spring Boot Actuator** is a sub-project of Spring Boot that provides production-ready features to help you monitor and manage your application.
   - It provides a set of built-in endpoints that expose information about your application, such as health status, metrics, environment details, and more.
   - Actuator endpoints can be accessed over HTTP or JMX, and they provide valuable insights into the runtime behavior of your application.
@@ -451,19 +451,23 @@
      6. `spring-boot-starter-log4j2`, `spring-boot-starter-logging`: Provides dependencies for logging in Spring Boot applications, including Log4j2, Logback, or JDK Logging.
 
 ### 15. How to create a customized starter in Spring Boot?
-1. Define Dependencies: Identify the dependencies and configurations that you want to include in your starter. These could be libraries, frameworks, or custom components that provide specific functionalities. 
-2. Create a New Maven or Gradle Project: Start by creating a new Maven or Gradle project for your custom starter. You can use tools like Maven Archetype or Spring Initializr to generate the project structure.
-3. Configure Project Structure: Organize your project structure according to Maven/Gradle conventions. You typically need to include the following directories:
-   - src/main/java: Contains Java source code.
-   - src/main/resources: Contains configuration files and resources.
-   - src/test/java: Contains test source code.
-   - src/test/resources: Contains test configuration files and resources.
-4. Implement Configuration: Write the necessary configuration classes to configure the dependencies and components included in your starter. This may involve creating Spring @Configuration classes, @Bean methods, or other configuration mechanisms.
-5. Package Dependencies: Package your dependencies and configurations into a reusable module. This typically involves creating a JAR file containing the compiled classes and resources.
-6. Create Spring Boot Auto-Configuration: If your starter requires custom auto-configuration, you can create a Spring Boot auto-configuration class. This class should be annotated with @Configuration and @ConditionalOnClass or @ConditionalOnMissingBean annotations to ensure that it's only applied when specific conditions are met.
-7. Define Starter Metadata: Create a spring.factories file in the src/main/resources/META-INF directory to specify the auto-configuration classes included in your starter. This file should contain entries in the format org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.CustomAutoConfiguration.
-8. Publish Your Starter: Publish your customized starter to a Maven repository or a local repository so that it can be consumed by other Spring Boot projects. You can use tools like Maven or Gradle to publish your artifact.
-9. Use Your Starter: To use your custom starter in a Spring Boot project, include it as a dependency in the project's pom.xml (Maven) or build.gradle (Gradle) file. Once added, Spring Boot will automatically apply the configurations and dependencies included in your starter.
+1. **Define Dependencies**: Identify the dependencies and configurations that you want to include in your starter. These could be libraries, frameworks, or custom components that provide specific functionalities. 
+2. **Create a New Maven or Gradle Project**: Start by creating a new Maven or Gradle project for your custom starter. You can use tools like Maven Archetype or Spring Initializr to generate the project structure.
+3. **Configure Project Structure**: Organize your project structure according to Maven/Gradle conventions. You typically need to include the following directories:
+   - **src/main/java**: 
+        > Contains Java source code.
+   - **src/main/resources**:
+        > Contains configuration files and resources.
+   - **src/test/java**:
+        > Contains test source code.
+   - **src/test/resources**:
+        > Contains test configuration files and resources.
+4. **Implement Configuration**: Write the necessary configuration classes to configure the dependencies and components included in your starter. This may involve creating Spring @Configuration classes, @Bean methods, or other configuration mechanisms.
+5. **Package Dependencies**: Package your dependencies and configurations into a reusable module. This typically involves creating a JAR file containing the compiled classes and resources.
+6. **Create Spring Boot Auto-Configuration**: If your starter requires custom auto-configuration, you can create a Spring Boot auto-configuration class. This class should be annotated with @Configuration and @ConditionalOnClass or @ConditionalOnMissingBean annotations to ensure that it's only applied when specific conditions are met.
+7. **Define Starter Metadata**: Create a spring.factories file in the src/main/resources/META-INF directory to specify the auto-configuration classes included in your starter. This file should contain entries in the format org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.CustomAutoConfiguration.
+8. **Publish Your Starter**: Publish your customized starter to a Maven repository or a local repository so that it can be consumed by other Spring Boot projects. You can use tools like Maven or Gradle to publish your artifact.
+9. **Use Your Starter**: To use your custom starter in a Spring Boot project, include it as a dependency in the project's pom.xml (Maven) or build.gradle (Gradle) file. Once added, Spring Boot will automatically apply the configurations and dependencies included in your starter.
 
 ### 16. What is Singleton DP. Are Spring Beans thread safe?
 
