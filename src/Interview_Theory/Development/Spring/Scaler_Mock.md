@@ -81,11 +81,18 @@
     - Example:
       ```java
       public class Car {
-          private Engine engine;
+          private PowerSocket socket;
           public Car() {
           }
-          public void setEngine(Engine engine) {
-              this.engine = engine;
+          public void setPowerSocket(PowerSocket socket) {
+              this.socket = socket;
+          }
+      }
+      ```
+      ```java
+      public class Engine {
+          public void start() {
+             System.out.println("Engine started");
           }
       }
       ```
