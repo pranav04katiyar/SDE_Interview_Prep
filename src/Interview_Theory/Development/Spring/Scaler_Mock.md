@@ -74,7 +74,7 @@
         >     - So if we want to change the `Engine` object, we can easily do it by passing a different `Engine` object to the `Car` class.
         > - This way, the `Car` class is loosely-coupled with the `Engine` class and it is easy to test, maintain and modify.
         > - This is the main idea behind Dependency Injection.
-- There are 2 types of Dependency Injection:
+- There are 3 types of Dependency Injection:
   1. Constructor Injection: The dependencies are provided through the class constructor.
     - > The above `Car and Engine` example is an example of Constructor Injection.
   2. Setter Injection: The dependencies are provided through setter methods.
@@ -104,42 +104,69 @@
         >     - This way, the `Engine` can have any kind of specs, while also following the requirements of the `Car` class.
         >     - This also allows for many different types of engines to be used in the `Car` class as long as they follow the requirements defined.
         > - This way, the `Car` class is loosely-coupled with the `Engine` class and it is easy to test, maintain and modify.
-      
+  3. Field Injection: The dependencies are provided through public fields.
+    - > Field Injection is not recommended as it violates the principle of OOPS (encapsulation) and makes the class tightly coupled with the dependency.
+    - Example:
+      ```java
+      public class Car {
+          @Autowired
+          private Engine engine;
+      }
+      ```
+      ```java
+      public class Main {
+          public static void main(String[] args) {
+              ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+              Car car = context.getBean(Car.class);
+            }
+        }
+      ```
+        ```java
+        @Configuration
+        @ComponentScan(basePackages = "com.example")
+        public class AppConfig {
+        }
+        ```
+        - > The above example uses Field Injection to inject the `Engine` dependency into the `Car` class.
+          > - The `Car` class has a field `engine` annotated with `@Autowired` to indicate that the `Engine` dependency should be injected by Spring.
+          > - The `AppConfig` class is annotated with `@Configuration` and `@ComponentScan` to enable component scanning and auto-detection of Spring beans.
+          > - Since these annotations are used in the "field", i.e. directly on the field, it is called Field Injection.
+  
   #### _Difference between Constructor Injection and Setter Injection:_
-    - Using the above analogies:
+   - Using the above analogies:
       > 1. **CONSTRUCTOR INJECTION:**
       >   - Imagine the car is a custom order car, where you specify that you want the car to come with a specific type of engine.
       >   - When the car is built, it's built with that engine already installed. You're essentially defining the requirements for the car upfront and the factory ensures those requirements are met during construction. 
-      >     - > The factory doesn't care which specific engine brand or model you choose, it only ensures that the car is built with a slot for the engine, which will be filled by whatever engine you provide.
+      >    - > The factory doesn't care which specific engine brand or model you choose, it only ensures that the car is built with a slot for the engine, which will be filled by whatever engine you provide.
       >       > - The car can be fitted by any engine designed by any other company at the time of its construction.
       >   - This flexibility allows you to use any compatible engine at the time of construction.
       > 2. **SETTER INJECTION:**
       >   - Imagine the car is a standard car, where you can buy the car and then choose the engine you want to install in it.
       >   - The car is built without an engine and you can choose to install any compatible engine you want after you've bought the car.
-      >     - > The car can be fitted by any engine designed by any other company after its construction.
+      >    - > The car can be fitted by any engine designed by any other company after its construction.
       >   - This flexibility allows you to use any compatible engine after the car has been built.
-    1. So, the main difference between Constructor Injection and Setter Injection is when the dependency is provided.
-        - In Constructor Injection, the dependency is provided during the construction of the object.
-        - In Setter Injection, the dependency is provided after the object has been constructed.
-    2. In constructor injection, partial injection is not allowed whereas it is allowed in setter injection.
-    3. The constructor injection doesn’t override the setter property, as they are immutable whereas the same is not true for setter injection.
-    4. Constructor injection creates a new instance if any modification is done. The creation of a new instance is not possible in setter injection.
-    5. In case the bean has many properties, then constructor injection is preferred. If it has few properties, then setter injection is preferred.
+   1. So, the main difference between Constructor Injection and Setter Injection is when the dependency is provided.
+       - In Constructor Injection, the dependency is provided during the construction of the object.
+       - In Setter Injection, the dependency is provided after the object has been constructed.
+   2. In constructor injection, partial injection is not allowed whereas it is allowed in setter injection.
+   3. The constructor injection doesn’t override the setter property, as they are immutable whereas the same is not true for setter injection.
+   4. Constructor injection creates a new instance if any modification is done. The creation of a new instance is not possible in setter injection.
+   5. In case the bean has many properties, then constructor injection is preferred. If it has few properties, then setter injection is preferred.
     
   #### _Which is Better to achieve loose coupling: Constructor Injection or Setter Injection?_
   - Depends on the specific use case and design preferences. Both techniques have their advantages:
-    - Constructor Injection:
-      1. Provides clarity and ensures that required dependencies are provided upfront during object creation. 
-      2. Encourages immutability, as the dependencies cannot be changed once the object is created. 
-      3. Typically used when the dependency is required for the object to function properly.
-      - In general, constructor injection is often preferred when the dependency is mandatory for the object's functionality and should be provided during object creation.
-      - Example: Car and tyres, Car and Engine etc.
-    - Setter Injection:
-      1. Offers more flexibility by allowing dependencies to be set or changed after object creation.
-      2. Useful when the dependency is optional or can change during the object's lifecycle. 
-      3. Can lead to more complex initialization logic and potential runtime errors if dependencies are not set correctly.
-      - In general, setter injection is more suitable when the dependency is optional or can change dynamically.
-      - Example: Car and power outlet, Car and older Music System etc.
+   - Constructor Injection:
+     1. Provides clarity and ensures that required dependencies are provided upfront during object creation. 
+     2. Encourages immutability, as the dependencies cannot be changed once the object is created. 
+     3. Typically used when the dependency is required for the object to function properly.
+     - In general, constructor injection is often preferred when the dependency is mandatory for the object's functionality and should be provided during object creation.
+     - Example: Car and tyres, Car and Engine etc.
+   - Setter Injection:
+     1. Offers more flexibility by allowing dependencies to be set or changed after object creation.
+     2. Useful when the dependency is optional or can change during the object's lifecycle. 
+     3. Can lead to more complex initialization logic and potential runtime errors if dependencies are not set correctly.
+     - In general, setter injection is more suitable when the dependency is optional or can change dynamically.
+     - Example: Car and power outlet, Car and older Music System etc.
   
 ### 2. How does Spring Framework implement Dependency Injection?
 - Spring Framework implements Dependency Injection through Inversion of Control (IoC) container.
@@ -150,16 +177,8 @@
     - > Spring provides a very easy way to inject the dependencies using beans.
       > - A bean is an object that is instantiated, assembled, and managed by the Spring IoC container.
       > - When we start a Spring application, Spring creates objects of all beans and puts them in the Spring container.
-  - **_Spring uses Dependency Injection to achieve IoC by injecting dependencies into objects rather than having the objects create their dependencies._**
-    - Spring provides various ways to define and inject dependencies:
-      1. XML-based configuration:
-         - Spring allows defining beans and their dependencies in an XML configuration file, which is then loaded by the Spring IoC container.
-      2. Annotation-based configuration:
-         - Spring supports annotations like `@Autowired`, `@Component`, `@Service`, `@Repository`, etc., to define and inject dependencies.
-      3. Java-based configuration:
-         - Spring allows defining beans and their dependencies using Java configuration classes annotated with `@Configuration` and `@Bean`.
-    - Spring uses annotations like `@Autowired`, `@Component`, `@Service`, `@Repository`, etc., to define and inject dependencies.
-      - Spring also supports constructor injection, setter injection, and field injection for injecting dependencies.
+  - **_Spring uses Dependency Injection to implement IoC by injecting dependencies into objects rather than having the objects create their dependencies._**
+    
 - Example:
   ```java
     @Component
