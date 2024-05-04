@@ -258,7 +258,8 @@
     - It also automatically configures a project with all the known best practices and a set of defaults.
 - **Difference between Spring and Spring Boot:**
   - The Spring Framework provides multiple features like dependency injection, data binding, aspect-oriented programming (AOP), data access, and many more that help ease development of web applications whereas Spring Boot helps in easier usage of the Spring Framework by simplifying or managing various loosely coupled blocks of Spring which are tedious and have a potential of becoming messy.
-  - Spring boot simplifies commonly used spring dependencies and runs applications straight from a command line. It also doesn’t require an application container and it helps in monitoring several components and configures them externally.
+  - Spring Boot is an opinionated view of the Spring platform and third-party libraries, which makes it easy to create stand-alone, production-grade Spring-based Applications that you can "just run", whereas Spring Framework is a comprehensive programming and configuration model.
+  - Spring Boot follows conventions over configurations, meaning it provides a set of starter dependencies that can be added to the project to automatically configure common features like logging, security, data access, etc., without the need for manual configuration, whereas Spring Framework requires manual configuration of these features.
 - **Other Spring Boot Peers that rely on Spring Framework:**
   - **_Spring Cloud:_** 
     > - Spring Cloud is a set of tools and libraries that helps in building cloud-native applications using the Spring Framework.
