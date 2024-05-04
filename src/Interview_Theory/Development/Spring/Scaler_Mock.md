@@ -81,36 +81,36 @@
     - Example:
       ```java
       public class Car {
-          private PowerSocket socket;
+          private PowerOutlet powerOutlet;
           public Car() {
           }
-          public void setPowerSocket(PowerSocket socket) {
-              this.socket = socket;
+          public void setPowerOutlet(PowerOutlet powerOutlet) {
+              this.powerOutlet = powerOutlet;
           }
       }
       ```
       ```java
-      public class Engine {
-          public void start() {
-             System.out.println("Engine started");
+      public class PowerOutlet {
+          public void On() {
+             System.out.println("Power Outlet is switched ON");
           }
       }
       ```
       ```java
       public class Main {
           public static void main(String[] args) {
-              Engine engine = new Engine();
+              PowerOutlet powerOutlet = new PowerOutlet();
               Car car = new Car();
-              car.setEngine(engine);
+              car.setPowerOutlet(powerOutlet);
           }
       }
       ```
-      - > In the above example, the `Car` class is dependent on the `Engine` class.
-        > - Instead of creating an object of the `Engine` class within the `Car` class, we are passing it as a parameter to the setter method of the `Car` class.
-        >   - Instead of making the car compatible with only one kind of engine by hard-coding it, we just make a slot for the engine, define the major requirements for an engine to fit in the car and ask an outside entity to provide the engine.
-        >     - This way, the `Engine` can have any kind of specs, while also following the requirements of the `Car` class.
-        >     - This also allows for many different types of engines to be used in the `Car` class as long as they follow the requirements defined.
-        > - This way, the `Car` class is loosely-coupled with the `Engine` class and it is easy to test, maintain and modify.
+      - > In the above example, the `Car` class is dependent on the `PowerOutlet` class.
+        > - Instead of creating an object of the `PowerOutlet` class within the `Car` class, we are passing it through a setter method `setPowerOutlet`.
+        >   - This way, the `PowerOutlet` dependency can be provided to the `Car` object after it has been constructed.
+        >   - This allows for user of the car to change the power outlet after the car is constructed as per their requirements. 
+        > - This way, the `Car` class is loosely-coupled with the `PowerOutlet` class and it is easy to test, maintain and modify.
+  
   3. Field Injection: The dependencies are provided through public fields.
     - > Field Injection is not recommended as it violates the principle of OOPS (encapsulation) and makes the class tightly coupled with the dependency.
     - Example:
@@ -148,10 +148,10 @@
       >       > - The car can be fitted by any engine designed by any other company at the time of its construction.
       >   - This flexibility allows you to use any compatible engine at the time of construction.
       > 2. **SETTER INJECTION:**
-      >   - Imagine the car is a standard car, where you can buy the car and then choose the engine you want to install in it.
-      >   - The car is built without an engine and you can choose to install any compatible engine you want after you've bought the car.
-      >    - > The car can be fitted by any engine designed by any other company after its construction.
-      >   - This flexibility allows you to use any compatible engine after the car has been built.
+      >   - Imagine the car is a standard car, where you can buy the car and choose the power outlet you want to install in it.
+      >   - The car is built without an power outlet pre-fitted and you can choose to install any compatible power outlet you want after you've bought the car.
+      >    - > The car can be fitted by any power outlet designed by any other company after its construction.
+      >   - This flexibility allows you to use any compatible power outlet after the car has been built.
    1. So, the main difference between Constructor Injection and Setter Injection is when the dependency is provided.
        - In Constructor Injection, the dependency is provided during the construction of the object.
        - In Setter Injection, the dependency is provided after the object has been constructed.
